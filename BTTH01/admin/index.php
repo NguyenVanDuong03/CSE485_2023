@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style_login.css">
 </head>
 <body>
+<?php require '../connect.php' ?>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary shadow p-3 bg-white rounded">
             <div class="container-fluid">
@@ -45,6 +46,7 @@
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
+            
             <div class="col-sm-3">
                 <div class="card mb-2" style="width: 100%;">
                     <div class="card-body">
@@ -60,6 +62,11 @@
             </div>
 
             <div class="col-sm-3">
+                <?php 
+                    $query = "SELECT count(*) FROM theloai";
+                    $types = mysqli_query($strConnection, $query);
+                    $type = mysqli_fetch_array($types);
+                ?>
                 <div class="card mb-2" style="width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title text-center">
@@ -67,13 +74,18 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            10
+                            <?= $type['count(*)'] ?>
                         </h5>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-3">
+                <?php 
+                    $query = "SELECT count(*) FROM tacgia";
+                    $authors = mysqli_query($strConnection, $query);
+                    $author = mysqli_fetch_array($authors);
+                ?>
                 <div class="card mb-2" style="width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title text-center">
@@ -81,13 +93,18 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            20
+                        <?= $author['count(*)'] ?>
                         </h5>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-3">
+                <?php 
+                    $query = "SELECT count(*) FROM baiviet";
+                    $posts = mysqli_query($strConnection, $query);
+                    $post = mysqli_fetch_array($posts);
+                ?>
                 <div class="card mb-2" style="width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title text-center">
@@ -95,7 +112,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                            <?= $post['count(*)'] ?>
                         </h5>
                     </div>
                 </div>
@@ -107,4 +124,5 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
+<?php mysqli_close($strConnection) ?>
 </html>
