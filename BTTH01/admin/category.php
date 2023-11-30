@@ -77,7 +77,72 @@
                                 <a href=""><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
-                       
+
+                        <!--Connection-->
+                        <?php
+                            $host = 'localhost';
+                            $db = 'btth01_cse485';
+                            $user = 'root';
+                            $pass = '';
+                            try {
+                                $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+                            } catch (PDOException $e) {
+                            echo $e->getMessage();
+                            }
+                        ?>
+
+                        <?php
+                            $checkIndex = 1;
+                            $count = 0;
+                            function countNumCategory() {
+                                global $conn;
+                                global $count;
+                                $result = $conn->query("SELECT count(ma_tloai) FROM theloai");
+                                $count = $result->fetchColumn();
+                                return $count;
+                            }
+                            function getCategory_Code($check_ID) {
+                                global $conn;
+                                global $checkIndex;
+                                $result = $conn->query("SELECT ma_tloai FROM theloai where ma_tloai = $check_ID");
+                                $row = $result->fetch();
+                                $ma_tloai = $row['ma_tloai'];
+                                $checkIndex++;
+                            return $ma_tloai;
+                            }
+
+                            function getCategory_Name($check) {
+                                global $conn;
+                                $result = $conn->query("SELECT ten_tloai FROM theloai where ma_tloai = $check");
+                                $row = $result->fetch();
+                                $ten_tloai = $row['ten_tloai'];
+                                return $ten_tloai;
+                            }
+                            ?>
+                    </tbody>
+
+                    <tbody>
+                        <?php
+                            for($i=1; $i<=countNumCategory(); $i++) {?>
+                        <tr>
+                            <th scope="row">
+                                <?= getCategory_Code($i)?>
+                            </th>
+
+                            <td>
+                                <?= getCategory_Name($i)?>
+                            </td>
+
+                            <td>
+                                <a href="edit_article.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                            <td>
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <?php
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
