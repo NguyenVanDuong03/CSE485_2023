@@ -1,3 +1,29 @@
+CREATE DATABASE  BTTH01_CSE485
+USE  BTTH01_CSE485
+
+CREATE TABLE tacgia (ma_tgia INT PRIMARY KEY NOT NULL, ten_tgia VARCHAR(100) NOT NULL, hinh_tgia VARCHAR(100));
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (1, "Nhacvietplus");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (2, "Sưu tầm");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (3, "Sandy");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (4, "Lê Trung Ngân");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (5, "Khánh Ngọc");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (6, "Night Stalker");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (7, "Phạm Phương Anh");
+INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (8, "Tâm tình");
+
+CREATE TABLE theloai (
+	ma_tloai INT PRIMARY KEY NOT NULL,
+	ten_tloai VARCHAR(50) NOT null
+);
+INSERT INTO theloai VALUE (1, "Nhạc trẻ");
+INSERT INTO theloai VALUE (2, "Nhạc trữ tình");
+INSERT INTO theloai VALUE (3, "Nhạc cách mạng");
+INSERT INTO theloai VALUE (4, "Nhạc thiếu nhi");
+INSERT INTO theloai VALUE (5, "Nhạc quê hương");
+INSERT INTO theloai VALUE (6, "POP");
+INSERT INTO theloai VALUE (7, "Rock");
+INSERT INTO theloai VALUE (8, "R&B");
+
 CREATE TABLE baiviet (
 	ma_bviet INT PRIMARY KEY NOT NULL,
 	tieude VARCHAR(200) NOT NULL,
