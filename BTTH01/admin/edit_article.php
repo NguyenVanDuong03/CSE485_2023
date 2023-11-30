@@ -14,30 +14,7 @@ try {
 <?php
 $checkIndex = 1;
 $count = 0;
-    function countNumArticle() {
-        global $conn;
-        global $count;
-        $result = $conn->query("SELECT count(ma_bviet) FROM baiviet");
-        $count = $result->fetchColumn();
-        return $count;
-    }
-    function getArticle_Code($check_ID) {
-        global $conn;
-        global $checkIndex;
-        $result = $conn->query("SELECT ma_bviet FROM baiviet where ma_bviet = $check_ID");
-        $row = $result->fetch();
-        $ma_bviet = $row['ma_bviet'];
-        $checkIndex++;
-        return $ma_bviet;
-    }
 
-    function getArticle_Name($check) {
-        global $conn;
-        $result = $conn->query("SELECT tieude FROM baiviet where ma_bviet = $check");
-        $row = $result->fetch();
-        $tieude = $row['tieude'];
-        return $tieude;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +47,7 @@ $count = 0;
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="category.php">Thể loại</a>
+                        <a class="nav-link" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="author.php">Tác giả</a>
@@ -88,52 +65,26 @@ $count = 0;
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_article.php" class="btn btn-success">Thêm mới</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên bài viết</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            for($i=1; $i<=countNumArticle(); $i++) {?>
-                        <tr>
-                            <th scope="row">
-                                <?= getArticle_Code($i)?>
-                            </th>
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin bài viết</h3>
+                <form action="process_edit_article.php" method="post">
+                <?php $id = $_GET['id'] ?? ''; ?>
+                    <input type="hidden" name="id" value="<?= $id ?>">
 
-                            <td>
-                                <?= getArticle_Name($i)?>
-                            </td>
+                <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã bài viết</span>
+                        <input type="text" class="form-control" name="txtCatId" >
+                    </div>
 
-                            <td>
-                                <a href="edit_article.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href="#" onclick="confirmDelete(<?= getArticle_Code($i) ?>)"><i class="fa-solid fa-trash"></i></a>
-                            </td>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tên bài viết</span>
+                        <input type="text" class="form-control" name="txtCatName" value = "">
+                    </div>
 
-                            <script>
-                                function confirmDelete(articleId) {
-                                    var confirmDelete = confirm("Bạn có chắc chắn muốn xóa bài viết này không?");
-    
-                                    if (confirmDelete) {
-                                        window.location.href = "process_delete_article.php?id=" + articleId;
-                                        
-                                    }
-                                }
-                            </script>
-
-                        </tr>
-                        <?php
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                    <div class="form-group  float-end ">
+                        <input type="submit" value="Lưu lại" class="btn btn-success">
+                        <a href="article.php" class="btn btn-warning ">Quay lại</a>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
