@@ -16,3 +16,5 @@ if(!empty($_POST["name"]) && !empty($_POST["comment"])){
 }
 echo json_encode($status);
 ?>
+
+<!-- cuong -->
