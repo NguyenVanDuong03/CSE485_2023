@@ -14,34 +14,8 @@ try {
 <?php
 $checkIndex = 1;
 $count = 0;
-    function countNumAuthor() {
-        global $conn;
-        global $count;
-        $result = $conn->query("SELECT count(ma_tgia) FROM tacgia");
-        $count = $result->fetchColumn();
-        return $count;
-    }
-    function getAuthor_Code($check_ID) {
-        global $conn;
-        global $checkIndex;
-        $result = $conn->query("SELECT ma_tgia FROM tacgia where ma_tgia = $check_ID");
-        $row = $result->fetch();
-        $ma_tgia = $row['ma_tgia'];
-        $checkIndex++;
-        return $ma_tgia;
-    }
 
-    function getAuthor_Name($check) {
-        global $conn;
-        $result = $conn->query("SELECT ten_tgia FROM tacgia where ma_tgia = $check");
-        $row = $result->fetch();
-        $ten_tgia = $row['ten_tgia'];
-        return $ten_tgia;
-    }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,13 +47,13 @@ $count = 0;
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="category.php">Thể loại</a>
+                        <a class="nav-link" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
+                        <a class="nav-link" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="article.php">Bài viết</a>
+                        <a class="nav-link active fw-bold" href="article.php">Bài viết</a>
                     </li>
                 </ul>
                 </div>
@@ -91,41 +65,26 @@ $count = 0;
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên tác giả</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                            for($i=1; $i<=countNumAuthor(); $i++) {?>
-                        <tr>
-                            <th scope="row">
-                                <?= getAuthor_Code($i)?>
-                            </th>
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin bài viết</h3>
+                <form action="process_edit_article.php" method="post">
+                <?php $id = $_GET['id'] ?? ''; ?>
+                    <input type="hidden" name="id" value="<?= $id ?>">
 
-                            <td>
-                                <?= getAuthor_Name($i)?>
-                            </td>
+                <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã bài viết</span>
+                        <input type="text" class="form-control" name="txtCatId" >
+                    </div>
 
-                            <td>
-                                <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <?php
-                            }
-                        ?>
-                       
-                    </tbody>
-                </table>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tên bài viết</span>
+                        <input type="text" class="form-control" name="txtCatName" value = "">
+                    </div>
+
+                    <div class="form-group  float-end ">
+                        <input type="submit" value="Lưu lại" class="btn btn-success">
+                        <a href="article.php" class="btn btn-warning ">Quay lại</a>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
