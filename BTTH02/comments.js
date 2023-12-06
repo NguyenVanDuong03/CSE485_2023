@@ -18,7 +18,7 @@ $(document).ready(function(){
 				}
             }
 		})
-	});	
+	});
 });
 
 // 1.5 Sửa tệp comments.js để bổ sung hiển thị bình luận với Ajax
