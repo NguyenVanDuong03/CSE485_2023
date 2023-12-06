@@ -151,3 +151,51 @@ VALUES (
 "Ánh nắng cuối ngày rồi cũng sẽ tắt, dòng sông con đò rồi cũng sẽ rẽ sang một hướng khác. Nhưng việc trồng người luôn cảm thụ với chuyến đò ngang, cứ tần tảo đưa rồi lặng lẽ quay về đưa sang. Con đò năm xưa của Thầy nặng trĩu yêu thương, hy sinh thầm lặng.",
 8, "2014/1/2"
 );
+
+--  table users
+CREATE TABLE users (
+	username VARCHAR(50) PRIMARY KEY NOT NULL,
+	pass VARCHAR(50) NOT null
+)
+
+insert into users (username, pass) values ('duong', 'duongg');
+insert into users (username, pass) values ('dvonasek0', 'Vonasek');
+insert into users (username, pass) values ('jmetrick1', 'Metrick');
+insert into users (username, pass) values ('tlinggard2', 'Linggard');
+insert into users (username, pass) values ('mcree3', 'Cree');
+insert into users (username, pass) values ('mheister4', 'Heister');
+insert into users (username, pass) values ('sofener5', 'Ofener');
+insert into users (username, pass) values ('aalam6', 'Alam');
+insert into users (username, pass) values ('bbetjeman7', 'Betjeman');
+insert into users (username, pass) values ('gglidder8', 'Glidder');
+insert into users (username, pass) values ('rivanyushin9', 'Ivanyushin');
+insert into users (username, pass) values ('dbarlesa', 'Barles');
+insert into users (username, pass) values ('pwilliamb', 'William');
+insert into users (username, pass) values ('kcorintonc', 'Corinton');
+insert into users (username, pass) values ('esprattd', 'Spratt');
+insert into users (username, pass) values ('cguidoe', 'Guido');
+insert into users (username, pass) values ('ccadoganf', 'Cadogan');
+insert into users (username, pass) values ('tmaccarterg', 'MacCarter');
+insert into users (username, pass) values ('ftaborh', 'Tabor');
+insert into users (username, pass) values ('hgrievesi', 'Grieves');
+insert into users (username, pass) values ('eginmanj', 'Ginman');
+insert into users (username, pass) values ('cgookeyk', 'Gookey');
+insert into users (username, pass) values ('wangricl', 'Angric');
+insert into users (username, pass) values ('dmaslenm', 'Maslen');
+insert into users (username, pass) values ('rmcmichaeln', 'McMichael');
+insert into users (username, pass) values ('mmcbradyo', 'McBrady');
+insert into users (username, pass) values ('ncroomep', 'Croome');
+insert into users (username, pass) values ('ogenikeq', 'Genike');
+insert into users (username, pass) values ('nsparshettr', 'Sparshett');
+insert into users (username, pass) values ('dhubans', 'Huban');
+insert into users (username, pass) values ('mcastillat', 'Castilla');
+insert into users (username, pass) values ('dbyrneu', 'Byrne');
+insert into users (username, pass) values ('fbischoffv', 'Bischoff');
+insert into users (username, pass) values ('hliddicoatw', 'Liddicoat');
+insert into users (username, pass) values ('wstriblingx', 'Stribling');
+insert into users (username, pass) values ('atoozey', 'Tooze');
+insert into users (username, pass) values ('cmerrellz', 'Merrell');
+insert into users (username, pass) values ('dmanthroppe10', 'Manthroppe');
+insert into users (username, pass) values ('djarret11', 'Jarret');
+insert into users (username, pass) values ('smorbey12', 'Morbey');
+insert into users (username, pass) values ('sabramovitch13', 'Abramovitch');
