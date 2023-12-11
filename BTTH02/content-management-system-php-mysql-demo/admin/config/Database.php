@@ -1,9 +1,10 @@
 <?php
+session_start();
 class Database{
 	
 	private $host  = 'localhost';
     private $user  = 'root';
-    private $password   = "123"; // password MariaDB
+    private $password   = "";
     private $database  = "phpzag_demo"; 
     
     public function getConnection(){		

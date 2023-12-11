@@ -1,33 +1,33 @@
 $(document).ready(function(){
-	var postsData = $('#postsList').DataTable({
+	var categoryData = $('#categoryList').DataTable({
 		"lengthChange": false,
 		"processing":true,
 		"serverSide":true,
 		"order":[],
 		"ajax":{
-			url:"manage_posts.php",
+			url:"manage_categories.php",
 			type:"POST",
-			data:{action:'postListing'},
+			data:{action:'categoryListing'},
 			dataType:"json"
 		},
 		"columnDefs":[
 			{
-				"targets":[0, 6, 7],
+				"targets":[0, 2, 3],
 				"orderable":false,
 			},
 		],
 		"pageLength": 10
 	});		
 	$(document).on('click', '.delete', function(){
-		var postId = $(this).attr("id");		
-		var action = "postDelete";
-		if(confirm("Are you sure you want to delete this post?")) {
+		var categoryId = $(this).attr("id");		
+		var action = "categoryDelete";
+		if(confirm("Are you sure you want to delete this category?")) {
 			$.ajax({
-				url:"manage_posts.php",
+				url:"manage_categories.php",
 				method:"POST",
-				data:{postId:postId, action:action},
+				data:{categoryId:categoryId, action:action},
 				success:function(data) {					
-					postsData.ajax.reload();
+					categoryData.ajax.reload();
 				}
 			})
 		} else {

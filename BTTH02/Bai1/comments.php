@@ -1,4 +1,6 @@
 <?php
+include_once("db_connect.php");
+global $conn;
 if(!empty($_POST["name"]) && !empty($_POST["comment"])){
 	$insertComments = "INSERT INTO comment (parent_id, comment, sender) VALUES ('".$_POST["commentId"]."', '".$_POST["comment"]."', '".$_POST["name"]."')";
 	mysqli_query($conn, $insertComments) or die("database error: ". mysqli_error($conn));	
